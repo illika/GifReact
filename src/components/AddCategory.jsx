@@ -13,7 +13,7 @@ export const AddCategory = ({ onNewCategory }) => {
 
         // Uso de los Callback del SET del useState
         // setCategories((category) => [...category, inputValue.trim()]);
-        onNewCategory(inputValue.trim());
+        onNewCategory(inputValue.trim().toLowerCase());
         setinputValue('');
     }
 
