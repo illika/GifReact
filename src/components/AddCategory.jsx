@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const AddCategory = ({ setCategories }) => {
+export const AddCategory = ({ onNewCategory }) => {
 
     const [inputValue, setinputValue] = useState('')
 
@@ -8,13 +8,12 @@ export const AddCategory = ({ setCategories }) => {
         setinputValue(event.target.value);
     }
     const onSubmit = (event) => {
-        event.preventDefault();
-        // console.log(inputValue);
+        event.preventDefault();        
         if (inputValue.trim().length <= 1) return;
 
         // Uso de los Callback del SET del useState
-        // setCategories(category => {})
-        setCategories((category) => [...category, inputValue.trim()]);
+        // setCategories((category) => [...category, inputValue.trim()]);
+        onNewCategory(inputValue.trim());
         setinputValue('');
     }
 
