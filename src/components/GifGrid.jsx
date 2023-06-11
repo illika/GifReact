@@ -1,13 +1,27 @@
+import { useEffect, useState } from "react";
 import { getGifs } from "../helpers/getGifs";
 
 export const GifGrid = ({ category }) => {
 
-    getGifs(category);
+    const [images, setImages] = useState([])
+
+    const getImages = async () => {
+        const newImages = await getGifs(category);
+        setImages(newImages);
+    }
+
+    useEffect(() => { getImages() }, []);
 
     return (
         <>
             <h2> {category} </h2>
-            <p>Hola mundo</p>
+            <ol>
+                {
+                    images.map(image => (
+                         <li key={image.id}>{image.title}</li>
+                    ))
+                }
+            </ol>
         </>
     )
 }
